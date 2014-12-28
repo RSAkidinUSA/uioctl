@@ -26,7 +26,6 @@ little-endian by default
 ./uioctl /dev/uio0 0 -n 100 -w 1 -r 0
 ./uioctl /dev/uio0 0x818 0
 ./uioctl /dev/uio0 -m
-./uioctl -l
 
 BUT WAIT?  hexdump -C /dev/uio0 -s 0x
 

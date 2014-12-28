@@ -18,6 +18,7 @@
  * Changelog:
  *  2013-12-04: bnewbold: Initial version; missing width management, list mode
  *  2013-12-19: bnewbold: GPLv3; fix mmap size
+ *  2014-12-28: bnewbold: remove unimplemented 'list' mode
  *
  */
 
@@ -38,17 +39,15 @@
 enum mode_type {
     MODE_READ,
     MODE_WRITE,
-    MODE_LIST,
     MODE_MONITOR
 };
 
 static void usage(int exit_status) {
     fprintf(exit_status == EXIT_SUCCESS ? stdout : stderr,
-        "Usage: %s [options] [-l] [/dev/uioX [-m] [<addr> [<value>]]]\n"
+        "Usage: %s [options] [/dev/uioX [-m] [<addr> [<value>]]]\n"
         "\n"
         "Functions:\n"
         "  monitor (-m) the device for interrupts\n"
-        "  list (-l) all devices and their mappings\n"
         "  read words from <addr>\n"
         "  write <value> to <addr> (will zero-pad word width)\n"
         "\n"
@@ -60,14 +59,6 @@ static void usage(int exit_status) {
         ,
         PROGRAM_NAME, DEFAULT_WIDTH);
     exit(exit_status);
-}
-
-static void list_devices() {
-    // TODO:
-    // - try to list /sys/devices/uio*
-    // - for each in the above, print memory regions
-    fprintf(stderr, "listing not yet implemented\n");
-    exit(EXIT_FAILURE);
 }
 
 static void monitor(char *fpath, int forever) {
@@ -123,8 +114,6 @@ int main(int argc, char *argv[]) {
         switch(c) {
         case 'h':
             usage(EXIT_SUCCESS);
-        case 'l':
-            list_devices();
         case 'm':
             mode = MODE_MONITOR;
             break;
