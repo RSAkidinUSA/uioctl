@@ -1,7 +1,7 @@
 /*
  * uioctl.c: Userspace I/O manipulation utility
  *
- * Copyright (C) 2013, Bryan Newbold <bnewbold@leaflabs.com>
+ * Copyright (C) 2013-2014, Bryan Newbold <bnewbold@robocracy.org>
  *
  * GPLv3 License
  * This program is free software: you can redistribute it and/or modify
